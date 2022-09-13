@@ -79,7 +79,7 @@ app.post('/api/add-avatar/:_id', multer, async (req, res, next) => {
 
 // Login
 app.post('/api/login', async (req, res, next) => {
-    // Move this on top of page
+    // Move this on top of pagee
     const bcrypt = require('bcryptjs');
     const User = require('./models/User');
 
