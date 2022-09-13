@@ -11,6 +11,9 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(cors());
 
 
+app.get('/', (req, res, next) => res.send('Wellcome to home renter'));
+
+
 
 app.post('/api/signup', async (req, res, next) => {
     const hash = require('./helpers/hashPassword.js');
