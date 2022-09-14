@@ -7,7 +7,7 @@ app.use(cors());
 
 // Static files
 const path = require('path')
-app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('./images', express.static(path.join(__dirname, 'images')));
 
 
 app.get('/', (req, res, next) => res.send('Wellcome to home renter'));
