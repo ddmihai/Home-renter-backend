@@ -48,12 +48,11 @@ app.post('/api/add-avatar/:_id', multer, async (req, res, next) => {
     const { deleteImage } = require('./helpers/deleteImage.js');
 
     // Build the image path
-    const file = req.file && req.protocol + '://' + req.get('host') + '/' + req.file.path;
+    const file = req.protocol + '://' + req.get('host') + '/images/' + req.file.filename;
 
     if (file) {
         try {
             const userRequired = await User.findById({_id: req.params._id});
-            console.log('Add avatar FILE:   ' + file);
             if (userRequired.avatar.length === 0) {
                 await User.findByIdAndUpdate({_id: req.params._id}, {avatar: file});
                 return res.status(201).send('Image uploaded.');
