@@ -1,10 +1,8 @@
-const fs = require('fs');
-
+const { cloudinary } = require('../connection/cloudinary');
 
 module.exports = {
-    deleteImage: (imageLink) => {
-        const link = imageLink.split('com')[1];
-        console.log(link);
-        fs.unlinkSync('.' + link);
+    deleteImage: async imageLink => {
+        const publicId = 'home_renter/' + imageLink.split('.')[0];
+        await cloudinary.uploader.destroy(publicId);    
     }
 }
